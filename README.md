@@ -27,6 +27,27 @@ The hypothesis here are stated in terms of $p_{old}$ and  $p_{new}$ , which are 
     - Use a sample size for each group equal to the ones in the `df2` data.
     - Compute the difference in the "converted" probability for the two samples above. 
     - Perform the sampling distribution for the "difference in the converted probability" between the two simulated-samples over 10,000 iterations; and calculate an estimate.
- 
+
+## Code sample
+This is a sample of the code used to run the analysis
+```python 
+import statsmodels.api as sm
+
+# number of conversions with the old_page
+convert_old = len(df2[(df2.group=="control") & (df2.converted==1)])
+print(convert_old)
+
+# # # number of conversions with the new_page
+convert_new = len(df2[(df2.group=="treatment") & (df2.converted==1)])
+print(convert_new)
+
+# number of individuals who were shown the old_page
+n_old = len(df2[(df2.group=="control")])
+print(n_old)
+
+# number of individuals who received new_page
+n_new = len(df2[(df2.group=="treatment")])
+print(n_new)
+```
 ## Final result 
 After taking the mentioned steps, the results in dicate that ***the new page did not make much impact*** compared to the old one.
